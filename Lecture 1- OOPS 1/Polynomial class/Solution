@@ -55,34 +55,27 @@
 	}
   */
 
-
-import java.util.Arrays;
-
 public class Polynomial {
 	
-  private int coff[] = new int[100];
+	private int coff[] = new int[100];
 	static Polynomial res = new Polynomial();
 	
-	public Polynomial() {
-		Arrays.fill(coff, 0);
-	}
-	
 	public void setCoefficient(int degree, int coeff){
-	      this.coff[degree] = coeff;
+		this.coff[degree] = coeff;
 	}
 	
 	public void print(){
-      	for(int i=0; i<coff.length; i++)
-          if(coff[i] != 0)
-            System.out.print(coff[i] + "x" + i + " "); 
+      		for(int i=0; i<coff.length; i++)
+          		if(coff[i] != 0)
+            			System.out.print(coff[i] + "x" + i + " "); 
 	}
 
 // Adds two polynomials and returns a new polynomial which has result
 	public Polynomial add(Polynomial p){
-    for(int i=0; i<100; i++)
-			  res.coff[i] = this.coff[i] + p.coff[i];
+    		for(int i=0; i<100; i++)
+			res.coff[i] = this.coff[i] + p.coff[i];
 		
-    return res;
+    		return res;
 	}
 	
 // Subtracts two polynomials and returns a new polynomial which has result
@@ -95,7 +88,7 @@ public class Polynomial {
 	
 // Multiply two polynomials and returns a new polynomial which has result
 	public Polynomial multiply(Polynomial p){
-    for(int i=0; i<100; i++)
+    		for(int i=0; i<100; i++)
 		  for(int j=0; j<100; j++)
 				if((i+j) <100)
 					res.coff[i+j]+= (this.coff[i] * p.coff[j]);
