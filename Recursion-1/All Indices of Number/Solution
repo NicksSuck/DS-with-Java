@@ -1,0 +1,51 @@
+public class Solution {
+
+public static int[] allIndexes(int input[], int x) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		
+		int result[] = new int[input.length];
+		int index=0, new_index=0;
+		
+		allIndexes(input, x, 0, result, index);
+  		
+  		//starting from i=1 to avoid 0th index
+		for(int i=1; i<input.length; i++) //to find length of the result[] filled
+        {
+          if(result[i] == 0)
+          {
+            new_index = i;
+            break;
+          }
+          if(i == input.length-1)	//to check the array having all same elements that also equal to x
+            new_index = input.length;
+        }
+		
+  		int new_result[] = new int[new_index];
+  		
+  		for(int i=0; i<new_result.length; i++)	//copying result[] to new_result[] to avoid 0's at the end of result[]
+          new_result[i] = result[i];
+  
+		return new_result;
+      
+	}
+  
+  	private static int[] allIndexes(int input[], int x, int start, int result[], int index) {
+  	
+  		if(input[start] == x)
+  			result[index++] = start;
+  		
+      
+  		if(start == input.length -1 )
+  			return result;
+      
+  		allIndexes(input, x, start+1, result, index);
+  		return result;
+  	
+  	} 
+  	
+}
