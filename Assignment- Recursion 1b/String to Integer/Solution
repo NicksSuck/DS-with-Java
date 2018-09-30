@@ -1,0 +1,17 @@
+
+public class solution {
+
+	public static int convertStringToInt(String input){
+
+      int k = input.length() - 1;
+      
+      if(input.length() <= 1)
+        return input.charAt(0) - '0';
+      
+      int ans = (input.charAt(0) - '0') * (int)Math.pow(10,k);
+      
+      int smallAns = convertStringToInt(input.substring(1));
+      return ans + smallAns;
+      
+	}
+}
