@@ -1,0 +1,14 @@
+public class Solution {
+
+	public static String removeConsecutiveDuplicates(String s) {
+
+      if(s.length() <= 1)
+        return s;
+      
+      if(s.substring(0,1).equals( s.substring(1,2) ) )
+        return removeConsecutiveDuplicates(s.substring(1));
+      else
+        return s.substring(0,1) + removeConsecutiveDuplicates(s.substring(1));
+	}
+
+}
