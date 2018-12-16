@@ -1,0 +1,69 @@
+
+public class Solution {
+	
+	public static void quickSort(int[] input) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * No need to print or return the output.
+		 * Taking input and printing output is handled automatically.
+		 */
+		
+      quickSort(input, 0, input.length-1);
+      
+	}
+  
+  	//si=startIndex, ei=endIndex
+  	static void quickSort(int[] input, int si, int ei) {
+      
+      if(si>=ei)
+        return;
+      
+      int pivotPos = partition(input, si, ei);
+      quickSort(input,si,pivotPos-1);
+      quickSort(input,pivotPos+1,ei);
+      
+    }
+  
+  	static int partition(int[] input, int si, int ei) {
+      
+      int pivot = input[si];
+      int count=0;
+      
+      for(int i=si+1; i<=ei; i++)		
+      {
+        if(pivot >= input[i])
+			count++;
+      }
+
+      int pivotPos = si + count;
+      
+      //swap b/w pivot and its position
+	  swap(input, si, si+count);
+
+      int i=si, j=ei;
+      while(i<pivotPos && j>pivotPos)
+      {
+      	if(input[i] <= pivot)
+          i++;
+        else if(input[j] > pivot)
+          j--;
+        else
+        {
+          swap(input, i, j);
+          i++;
+          j--;
+        }
+        
+      }
+      
+      return pivotPos;
+    } //END of partition function  	
+  
+  	static void swap(int[] input, int first, int second) {
+      int temp = input[first];
+      input[first] = input[second];
+      input[second] = temp;
+    }
+	
+}
