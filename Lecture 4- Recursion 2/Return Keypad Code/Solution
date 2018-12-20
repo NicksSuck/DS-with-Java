@@ -1,0 +1,66 @@
+public class solution {
+
+	// Return a string array that contains all the possible strings
+	public static String[] keypad(int n){
+
+	      if(n==0 || n==1)
+          {
+            String[] res = {""};
+            return res;
+          }
+	      
+	      char[] unit = helper(n%10);
+	      String[] smallAns = keypad(n/10);
+	      
+	      int totalLength = unit.length * smallAns.length;
+	   	  String[] ans = new String[totalLength];
+	      
+      	  int k=0;
+	      for(int u=0; u<unit.length; u++)
+	      {
+	        for(int sa=0; sa<smallAns.length; sa++)
+	        {
+	          ans[k++] = smallAns[sa] + unit[u];
+	        }      
+	      }
+	      
+	      return ans;
+	}
+	  
+	  	
+	  	public static char[] helper(int n) {
+	      
+	  		switch(n){
+	        case 2: 
+	        	char help2[] = {'a','b','c'};
+	        	return help2;
+	        case 3:	
+	        	char help3[] = {'d','e','f'}; 
+	        	return help3;
+	        case 4: 
+	        	char help4[] = {'g','h','i'}; 
+	        	return help4;
+	        case 5:
+	        	char help5[] = {'j','k','l'}; 
+	        	return help5;
+	        case 6: 
+	        	char help6[] = {'m','n','o'};
+	        	return help6;
+	        case 7:
+	        	char help7[] = {'p','q','r','s'};
+	        	return help7;
+	        case 8: 
+	        	char help8[] = {'t','u','v'};
+	        	return help8;
+	        case 9: 
+	        	char help9[] = {'w','x','y','z'};
+	        	return help9;
+	        default:
+	        	char help[] = {'\0'};
+	        	return help;
+	      }
+	      
+	    }
+	
+	
+}
