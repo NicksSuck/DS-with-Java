@@ -1,0 +1,64 @@
+/*************** 
+ * Following is the Node class already written 
+class LinkedListNode<T> {
+	T data;
+	LinkedListNode<T> next;
+
+	public Node(T data) {
+		this.data = data;
+	}
+}
+ ***************/
+
+public class Solution {
+
+	public static LinkedListNode<Integer> mergeTwoList(LinkedListNode<Integer> head1, LinkedListNode<Integer> head2) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+      
+      if(head1 == null)
+        return head2;
+      if(head2 == null)
+        return head1;
+      
+      LinkedListNode<Integer> t1 = head1, t2 = head2, head3=null, tail=null;
+      
+      if(t1.data < t2.data) {
+        head3 = head1;
+        tail = head1;
+        t1 = t1.next;
+      }
+      else {
+        head3 = head2;
+        tail = head2;
+        t2 = t2.next;
+      }
+      
+      while(t1 != null && t2 != null) {
+        
+        if(t1.data < t2.data) {
+          tail.next = t1;
+          tail = tail.next;
+          t1 = t1.next;
+        }
+        else {
+          tail.next = t2;
+          tail = tail.next;          
+          t2 = t2.next;
+        }
+        
+      }
+      
+      if(t1 != null)
+        tail.next = t1;
+      if(t2 != null)
+        tail.next = t2;
+      
+      return head3;
+	}
+
+}
